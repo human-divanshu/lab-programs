@@ -1,0 +1,19 @@
+Running the command "hadoop classpath" will return the path of hadoop class files that are required to compile the java code that you have written for hadoop.
+
+So, we will create an environment variable to this path by running following command.
+
+export HADOOP_CLASS=$(hadoop classpath)
+
+Now, environment variable HADOOP_CLASS holds the value of hadoop classpath. We have to now run java compiler on source code as given below:
+
+javac -classpath ${HADOOP_CLASSPATH} WordCount.java WordCountMapper.java WordCountReducer.java
+
+This will compile the java code and generate the .class files. Now you have to archive them into a jar. To do this, run the following command
+
+jar -cvf WordCount.jar WordCount*.class
+
+This will generate WordCount.jar which can be run on hadoop. You can run this file by typing the following command
+
+hadoop jar wc.jar org.apache.hadoop.examples.WordCount /examples/wordcount/input /examples/wordcount/output
+
+The output directory should not exist before execution. It will be created by hadoop.
