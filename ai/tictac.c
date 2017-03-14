@@ -17,7 +17,7 @@
 #define PLACE(x) ((board[x]==BLANK)?' ':((board[x]==SYM_X)?'X':'O'))
 
 // game board
-int board[VECTORSIZE] = {2,2,2,2,2,2,2,2,2};
+int board[VECTORSIZE] = {BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK};
 int turncount; // from 1 to 9, total moves in game
 int playerturn; // 0 - human, 1 - computer
 
