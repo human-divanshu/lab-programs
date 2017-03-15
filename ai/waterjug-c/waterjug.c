@@ -78,7 +78,7 @@ void generatestates(state* s)
 	}
 
 	// empty jug 1
-	if(s->j1 > jug1size) {
+	if(s->j1 > 0) {
 		printf("Empty jug 1: ");
 		new = (state*) malloc(sizeof(state));
 		new->j1 = 0;
@@ -89,7 +89,7 @@ void generatestates(state* s)
 	}
 
 	// empty jug 2
-	if(s->j2 > jug2size) {
+	if(s->j2 > 0) {
 		printf("Empty jug 2: ");
 		new = (state*) malloc(sizeof(state));
 		new->j1 = s->j1;
