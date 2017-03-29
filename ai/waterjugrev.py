@@ -26,7 +26,7 @@ def isfinal(indexofs):
 	matchcount = matchcount + 1
 	j1 = indexofs / (jug2size + 1)
 	j2 = indexofs % (jug2size + 1)
-	return (j1 == finalwater) or (j2 == finalwater)
+	return (j1 == 0) and (j2 == 0)
 
 def decodestate(indexofs):
 	j1 = indexofs / (jug2size + 1)
@@ -53,12 +53,12 @@ def generatestate(indexofs):
 	global statesmade
 	j1, j2 = decodestate(indexofs)
 	#empty 1
-	if j1 > 0:
+	if j1 == jug1size:
 		statesmade = statesmade + 1
 		print "Empty 1"
 		addstate(0, j2, indexofs)
 	#empty 2
-	if j2 > 0:
+	if j2 == jug2size:
 		statesmade = statesmade + 1
 		print "Empty 2"
 		addstate(j1, 0, indexofs)
@@ -79,12 +79,12 @@ def generatestate(indexofs):
 		newj1 = j1 + topour
 		addstate(newj1, newj2, indexofs)
 	# fill j1
-	if j1 == 0:
+	if j1 < jug1size:
 		statesmade = statesmade + 1
 		print "fill j1"
 		addstate(jug1size, j2, indexofs)
 	# fill j2
-	if j2 == 0:
+	if j2 < jug2size:
 		statesmade = statesmade + 1
 		print "fill j2"
 		addstate(j1, jug2size, indexofs)
@@ -142,7 +142,7 @@ searchspace[0] = [1,-1]	# because no one is parent of initial state
 
 #print searchspace
 
-istate = 0 # initial state
+istate = finalwater # initial state
 
 if algo == 0:
 	queue(istate)
