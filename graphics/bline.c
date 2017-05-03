@@ -9,10 +9,10 @@ int main(void)
     float ctr;
     int gd = DETECT, gm;
     
-    printf("Enter the starting point in format (x,y) :");
+    printf("Enter the starting point in format  :");
     scanf("%f %f", &x1, &y1);
 
-    printf("Enter the end point in format (x,y) :");
+    printf("Enter the end point in format :");
     scanf("%f %f", &x2, &y2);
 
     // calculate slope of line  
